@@ -3,22 +3,12 @@ import {CircularProgress,Grid,Typography,InputLabel,MenuItem,FormControl,Select}
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 import useStyles from './styles';
 
-const List=()=>{
+const List=({places})=>{
     const classes=useStyles();
     const [type,setType]=useState('restaurants');
     const [rating,setRating]=useState('');
 
-    const places=[
-        {name:'Sitio de interés'},
-        {name:'Buenas copas'},
-        {name:'Buenas tapas'},
-        {name:'Sitio de interés'},
-        {name:'Buenas copas'},
-        {name:'Buenas tapas'},
-        {name:'Sitio de interés'},
-        {name:'Buenas copas'},
-        {name:'Buenas tapas'},
-    ]
+    
     return (
        <div className={classes.container}>
            <Typography variant="h4">Restaurantes, Hoteles y lugares de interés</Typography>
