@@ -10,20 +10,19 @@ import Map from './components/Map/Map';
 const App = () => {
     const [places, setPlaces] = useState([]);
 
-    const [coordinates, setCoordinates] = useState({ lat: 36.72, lng: -4.42 });
-    const [bounds, setBounds] = useState(null);
+    const [coordinates, setCoordinates] = useState({});
+    const [bounds, setBounds] = useState({});
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
             setCoordinates({ lat: latitude, lng: longitude });
         })
-    }, [])
+    }, []);
 
     useEffect(() => {
-        getPlacesData(bounds.sw, bounds.ne)
-            .then((data) => {
-                setPlaces(data);
-            })
+        getPlacesData(bounds.sw, bounds.ne).then((data) => {
+            setPlaces(data);
+        })
     }, [coordinates, bounds]);
     return (
         <div>
@@ -39,7 +38,6 @@ const App = () => {
                         setBounds={setBounds}
                         coordinates={coordinates} />
                 </Grid>
-
             </Grid>
         </div>
     );
